@@ -1,0 +1,32 @@
+@model List<Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+    Layout = "_Layout";
+}
+
+<h2 class="h2 mb-3">Movies</h2>
+
+@if (@Model.Count == 0)
+{
+    <p class="text-muted fs-4">We don't have any movies yet.</p>
+    return;
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Movie</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var movie in @Model)
+    {
+        <tr>
+            <td>
+                @movie.Name
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

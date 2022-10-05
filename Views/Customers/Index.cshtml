@@ -1,0 +1,32 @@
+@model Vidly.ViewModels.CustomersIndexViewModel
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "_Layout";
+}
+
+<h2 class="h2 mb-3">Customers</h2>
+
+@if (@Model.Customers.Count == 0)
+{
+    <p class="text-muted fs-4">We don't have any customers yet.</p>
+    return;
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Customer</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var customer in @Model.Customers)
+    {
+        <tr>
+            <td>
+                <a class="link-info" asp-area="" asp-controller="Customers" asp-action="Details" asp-route-id="@customer.Id">@customer.Name</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
