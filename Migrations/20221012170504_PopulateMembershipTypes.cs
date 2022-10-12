@@ -10,14 +10,17 @@ namespace Vidly.Migrations
                 table: "MembershipType",
                 columns: new[] { "Id", "SignUpFee", "DurationInMonths", "DiscountRate" },
                 values: new object[] { 1, 0, 0, 0 });
+
             migrationBuilder.InsertData(
                 table: "MembershipType",
                 columns: new[] { "Id", "SignUpFee", "DurationInMonths", "DiscountRate" },
                 values: new object[] { 2, 30, 1, 10 });
+
             migrationBuilder.InsertData(
                 table: "MembershipType",
                 columns: new[] { "Id", "SignUpFee", "DurationInMonths", "DiscountRate" },
                 values: new object[] { 3, 90, 3, 15 });
+
             migrationBuilder.InsertData(
                 table: "MembershipType",
                 columns: new[] { "Id", "SignUpFee", "DurationInMonths", "DiscountRate" },
