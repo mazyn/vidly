@@ -17,7 +17,7 @@
     <thead>
     <tr>
         <th>Customer</th>
-        <th>Discount Rate</th>
+        <th>Membership Type</th>
     </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
                 <a class="link-info" asp-area="" asp-controller="Customers" asp-action="Details" asp-route-id="@customer.Id">@customer.Name</a>
             </td>
             <td>
-                @customer.MembershipType.DiscountRate.ToString()%
+                @customer.MembershipType.Name
             </td>
         </tr>
     }
