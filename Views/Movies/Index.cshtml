@@ -7,7 +7,7 @@
 
 <h2 class="h2 mb-3">Movies</h2>
 
-@if (@Model.Count == 0)
+@if (Model.Count == 0)
 {
     <p class="text-muted fs-4">We don't have any movies yet.</p>
     return;
@@ -17,15 +17,19 @@
     <thead>
     <tr>
         <th>Movie</th>
+        <th>Genre</th>
     </tr>
     </thead>
     <tbody>
-    @foreach (var movie in @Model)
+    @foreach (var movie in Model)
     {
         <tr>
             <td>
-                @movie.Name
+                <a class="link-info" asp-area="" asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">
+                    @movie.Name
+                </a>
             </td>
+            <td>@movie.Genre.Name</td>
         </tr>
     }
     </tbody>
