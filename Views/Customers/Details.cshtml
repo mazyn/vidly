@@ -5,4 +5,16 @@
     Layout = "_Layout";
 }
 
-<h1 class="h1">@Model.Name</h1>
+<h1 class="h1 mb-4">@Model.Name</h1>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        Membership Type: @Model.MembershipType.Name
+    </li>
+    @if (Model.Birthdate.HasValue)
+    {
+        <li class="list-group-item">
+            Bithdate: @Model.Birthdate.Value.ToShortDateString()
+        </li>
+    }
+</ul>

@@ -39,7 +39,9 @@ namespace Vidly.Controllers
         [Route("Details/{id:int:min(1)}")]
         public IActionResult Details(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customer = _context.Customers
+                .Include(c => c.MembershipType)
+                .SingleOrDefault(c => c.Id == id);
 
             return View(customer);
         }
