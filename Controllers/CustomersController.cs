@@ -1,6 +1,6 @@
-using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Vidly.Models;
+using Vidly.Database;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
@@ -8,18 +8,26 @@ namespace Vidly.Controllers
     [Route("[controller]")]
     public class CustomersController : Controller
     {
-        private List<Customer> _customers = new()
+        private readonly ApplicationDbContext _context;
+
+        public CustomersController(ApplicationDbContext context)
         {
-            new Customer { Id = 1, Name = "Foo" },
-            new Customer { Id = 2, Name = "Bar" },
-        };
+            _context = context;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET
         public IActionResult Index()
         {
+            var customers = _context.Customers.ToList();
+            
             var viewModel = new CustomersIndexViewModel
             {
-                Customers = _customers
+                Customers = customers
             };
 
             return View(viewModel);
@@ -28,7 +36,7 @@ namespace Vidly.Controllers
         [Route("Details/{id:int:min(1)}")]
         public IActionResult Details(int id)
         {
-            var customer = _customers.Find(c => c.Id.Equals(id));
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             return View(customer);
         }
