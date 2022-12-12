@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Vidly.Models
 {
+    [Table("MembershipType")]
     public record MembershipType
     {
         public byte Id { get; set; }
