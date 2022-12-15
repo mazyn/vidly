@@ -7,6 +7,8 @@
 
 <h2 class="h2 mb-3">Customers</h2>
 
+@Html.ActionLink("New Customer", "New", null, htmlAttributes: new { @class = "btn btn-primary px-3 text-uppercase font-weight-bold mb-3" })
+
 @if (@Model.Customers.Count == 0)
 {
     <p class="text-muted fs-4">We don't have any customers yet.</p>
