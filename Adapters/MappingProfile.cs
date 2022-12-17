@@ -14,11 +14,17 @@ namespace Vidly.Adapters
                 .ForMember(c => c.Id,
                     x => x.Ignore());
 
+            // MembershipType model mappings
+            CreateMap<MembershipType, MembershipTypeDto>();
+
             // Movie model mappings
             CreateMap<Movie, MovieDto>();
             CreateMap<MovieDto, Movie>()
                 .ForMember(m => m.Id,
                     x => x.Ignore());
+
+            // MovieGenre model mappings
+            CreateMap<MovieGenre, MovieGenreDto>();
         }
     }
 }

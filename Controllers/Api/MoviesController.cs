@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Vidly.Database;
 using Vidly.Dtos;
 using Vidly.Models;
@@ -24,6 +25,7 @@ namespace Vidly.Controllers.Api
         public ActionResult<IEnumerable<MovieDto>> GetMovies()
         {
             var movies = _dbContext.Movies
+                .Include(m => m.Genre)
                 .ToList()
                 .Select(_mapper.Map<MovieDto>);
 
